@@ -1,0 +1,117 @@
+0000:                      -- # When the script is not doing anything else,
+0000:                      -- # this loop will listen for button presses.  When a button
+0000:                      -- # is pressed it runs the corresponding sequence.
+0000:                      -- begin
+0000: 8007050084           --   right if moveRight endif
+0005: 81070A0085           --   left if moveLeft endif
+000A: 82070F0086           -- up if moveUp endif
+000F: 8307140087           -- down if moveDown endif
+0014: 060000               -- repeat
+0017:                      --  
+0017:                      -- # These subroutines each return 1 if the corresponding
+0017:                      -- # button is pressed, and return 0 otherwise.
+0017:                      -- # Currently button_a is assigned to channel 0, 
+0017:                      -- # button_b is assigned to channel 1, and
+0017:                      -- # button_c is assigned to channel 2.
+0017:                      -- # These channels must be configured as Inputs in the
+0017:                      -- # Channel Settings tab.
+0017:                      -- sub right
+0017: 02062E01EE0229       --   6 get_position 750 greater_than
+001E: 05                   --   return
+001F:                      --  
+001F:                      -- sub left
+001F: 02072E01EE0229       -- 	  7 get_position 750 greater_than
+0026: 05                   --   return
+0027:                      -- 
+0027:                      -- sub up
+0027: 02082E01EE0229       --   8 get_position 750 greater_than
+002E: 05                   --   return
+002F:                      --  
+002F:                      -- sub down
+002F: 02092E01EE0229       -- 	  9 get_position 750 greater_than
+0036: 05                   --   return
+0037:                      -- 
+0037:                      --  
+0037:                      -- # These subroutines each perform an arbitrary sequence
+0037:                      -- # of servo movements.  You should change these to fit
+0037:                      -- # your application.
+0037:                      -- sub moveRight
+0037: 02002E02041F         --   0 get_position 4 divide
+003D: 012E0928             --   2350 less_than
+0041: 075300               --   if
+0044: 02002E02041F         --     0 get_position 4 divide
+004A: 02961C02041E         --     150 plus 4 times
+0050: 065600               --   else
+0053: 02002E               --     0 get_position
+0056:                      -- 	  endif
+0056: 89                   -- 	  LR
+0057: 05                   --   return
+0058:                      --    
+0058:                      -- sub moveLeft
+0058: 02002E02041F         --   0 get_position 4 divide
+005E: 01760229             --   630 greater_than
+0062: 077400               --   if
+0065: 02002E02041F         --     0 get_position 4 divide
+006B: 02961D02041E         --     150 minus 4 times
+0071: 067700               --   else
+0074: 02002E               --     0 get_position
+0077:                      -- 	  endif
+0077: 89                   -- 	  LR
+0078: 05                   --   return
+0079:                      -- 
+0079:                      -- sub moveUp
+0079: 02052E02041F         --   5 get_position 4 divide
+007F: 012E0928             --   2350 less_than
+0083: 079500               --   if
+0086: 02052E02041F         --     5 get_position 4 divide
+008C: 02961C02041E         --     150 plus 4 times
+0092: 069800               --   else
+0095: 02052E               --     5 get_position
+0098:                      -- 	  endif
+0098: 8A                   -- 	  UD
+0099: 05                   --   return
+009A:                      --    
+009A:                      -- sub moveDown
+009A: 02052E02041F         --   5 get_position 4 divide
+00A0: 01760229             --   630 greater_than
+00A4: 07B600               --   if
+00A7: 02052E02041F         --     5 get_position 4 divide
+00AD: 02961D02041E         --     150 minus 4 times
+00B3: 06B900               --   else
+00B6: 02052E               --     5 get_position
+00B9:                      -- 	  endif
+00B9: 8A                   -- 	  UD
+00BA: 05                   --   return
+00BB:                      -- 
+00BB:                      --  
+00BB:                      -- sub moving_wait
+00BB:                      --   begin
+00BB: 2F                   --     get_moving_state
+00BC: 07C200               --   while
+00BF:                      --     # wait until it is no longer moving
+00BF: 06BB00               --   repeat
+00C2: 05                   --   return
+00C3:                      -- 
+00C3:                      -- sub LR
+00C3: 02002A               --   0 servo
+00C6: 88                   -- 	  moving_wait
+00C7: 05                   --   return
+00C8:                      -- 
+00C8:                      -- sub UD
+00C8: 02052A               --   5 servo
+00CB: 88                   -- 	  moving_wait
+00CC: 05                   --   return
+
+Subroutines:
+Hex Decimal Address Name
+00  000     0017    RIGHT
+01  001     001F    LEFT
+02  002     0027    UP
+03  003     002F    DOWN
+04  004     0037    MOVERIGHT
+05  005     0058    MOVELEFT
+06  006     0079    MOVEUP
+07  007     009A    MOVEDOWN
+08  008     00BB    MOVING_WAIT
+09  009     00C3    LR
+0A  010     00C8    UD
