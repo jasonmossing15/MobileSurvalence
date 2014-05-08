@@ -24,7 +24,7 @@ I tested my signals by the use of a voltmeter and a logic analyzer. The voltmete
 
 ## DEMO
 
-Here is a video of the [project](www.youtube.com/watch?v=6PL8EXLx0s8&feature=youtu.be).
+Here is a video of the project: http://www.youtube.com/watch?v=6PL8EXLx0s8&feature=youtu.be 
 
 ## Conclusion
 
