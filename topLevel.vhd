@@ -53,7 +53,7 @@ signal output : std_logic_vector(7 downto 0);
 
 begin
 
-				
+
 	 inst_rightPush : entity work.input_to_pulse_with_held
 		    Port map ( 
 					clk => clk,
@@ -62,7 +62,7 @@ begin
 					hold => btnR,
 					pulse => open
 					);
-					
+
 		 inst_leftPush : entity work.input_to_pulse_with_held
 		    Port map ( 
 					clk => clk,
@@ -71,7 +71,7 @@ begin
 					hold => btnL,
 					pulse => open
 					);
-					
+
 			inst_upPush : entity work.input_to_pulse_with_held
 		    Port map ( 
 					clk => clk,
@@ -80,7 +80,7 @@ begin
 					hold => btnU,
 					pulse => open
 					);
-					
+
 		 inst_downPush : entity work.input_to_pulse_with_held
 		    Port map ( 
 					clk => clk,
